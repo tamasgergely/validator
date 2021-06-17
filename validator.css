@@ -1,0 +1,89 @@
+/**
+ * Form validátor
+ */
+.error-message {
+    position: absolute;
+    right: 0px;
+    color: #ff4545;
+    font-size: 10px;
+    bottom: -17px;
+    font-weight: 500;
+}
+
+.error-message.relative {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    margin: 10px 0px 0px;
+}
+
+.error-sum {
+    font-size: 11px !important;
+    color: #ffce00 !important;
+    text-align: right !important;
+    font-weight: 400 !important;
+    margin: 20px 0px !important;
+    display: none;
+}
+
+.validation-failed {
+    border-bottom: 1px solid #ff4545 !important;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQyIDc5LjE2MDkyNCwgMjAxNy8wNy8xMy0wMTowNjozOSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDoyN0VDRTcxM0NERTIxMUVCQTM1MEFEMEVCNTZGRkYzMSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDoyN0VDRTcxNENERTIxMUVCQTM1MEFEMEVCNTZGRkYzMSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjI3RUNFNzExQ0RFMjExRUJBMzUwQUQwRUI1NkZGRjMxIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjI3RUNFNzEyQ0RFMjExRUJBMzUwQUQwRUI1NkZGRjMxIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+VpNzfgAABSRJREFUeNo0VGtsFGUUPTP7fvRFt91CLZUoLbQFKkpLiUAgRQgg+EqgYAqRH5VYTAgQ0wRJir+MFBOChGiMEN7RtBUEDEEgyiM2GlvK0u2WCn2xu93ubrvv3dmd650pfsnNzHwz37n3nnPuCHTrLqDRQZJiuN3XA5IItkwaVqdrc4HPt8lkMlXrTIZZSCSFxPi4Ozo81uOfV/rLVHnFT2TNQbacwfP312JsUR2MCEILIkCWIWu1iOv1KHI61leGw18al9ZWoa4OcZsNEZ0egiDAmEza7UNPq+3nL+6YOn3G5X2tuiW4YWN7xmCAshgJAt25DxgsCFEC46e+bX01334Iu3fjqdWMmMsF87MhGL0eaJMpyLm5yJSVQVdTi4J+J9DQAN9kqO2e88/9IzkvwYIUhB+dPZAMZiz7/ofWUrP1ULylBc5/umG+fg32yQBypQwQCADhEBCLIcERz84BHfwcpqW1MFVWYqi46OjEiZP7zL4RCB0dP8PS71i50ue7kzpyFH23b2P23T9gn1WsAkihEKT6eqR1OogXLsD6fBSYCCD1sBeJI18B27fDImhA9fUbY03NV8WcQSfqf79/Xv9ZCwb7+zHnxg3Yy8qZWmaEW5Wqq2GorUX24sUIbdqEmHccyMuDfsECWD7aBV1vL2KOhwjfvHF6bNAFsWjUvV5Ys3rWyIwZsF44D1txMSgYhJBIAFIaIgsl4MViYdIciojEQmjK5sKwZQsyFZUwrF2XbznzXYM4x9G/DatXIcaZijxeIMOcxeOgVApIS6ChYcgv8OQBF0xT01wiHgPNyAP6+mBlijK7P4b+6XCDmLaaqhMFhTA/fgyLVgeKxoEoH/D7gclJCINPVLCkYovBf6FLSdPvoxEWKgxRp4W2sxPJivncgFihNZpNMyMMZPBydcTVBRlIaTed5pYzEN1uiNEo4hYLNB4PwH4Fm1ntRGJwFgt9ThArn8nJydeKPAEQRQgStzgxAZiiUJ6hMJeRIARDELiSDANqJ3zqNnGVgpJQiZRyzUBWRCRZEBMer9fMJAtGIzDCllC4UypkjnjcOIkfAoMpwpDCn/JeSa5e0yrPeLkUMvs06Q/4xUTA36Nju9CSJUhxewJPBGJxCBycFrp4Av7Dh+Fua0PW2BjAqiPJCZPTgKpg72yGxjWgCNknuD94d3OR3twZOHcWmhUrkMOiUIFN5UiIhCHxuMUad0Bm8vVnz8HyVxdgNk+36nGrbQc4oqtWQ5sKN6Lv2NeYEsTxdL+LAg4HJQWRaEkNyW8uJ8rKpuiJE/T/Gr1/j8LcOZXMJsrNUyQk+u0mDfQ+IvbC5NDxoyK6r7RjtGnXOuWjMB+aOnWKJPVQCZHdTtGtWynC+xMcAwcOUFKjIdJop8FaW2lE2ed7/4Y17zmvX+W5P3kMno6L8BcXt1FZmQoau3WLpNklJCu6cYTKy2lk4SKKQ/3ZEVksRO3tNMTfPioppcjC8m/kRAjk7QW6Fy7G3+VV6N7zKUbnzzuSKCyk6IMHFIhEKHnlCtHevUSvv0FUtYCoqYkyDOQNBulJVxcN22zUlWU57nDeVWefaBCiYGXDakQYWX5X8579g/aZW6N1ywY027Yhyvbx7dwJb2cH3L9ew2jzJ3jOB8ONjZBrap6Z577SOPLFweaYj/0Ln6q6VmATE7tfYM9Zxz3wvrXukn/58kvFl9s/NFy+/DaZTJVilrWQZBLik5M+VtVhqKq4Gti392wiPz9t8AdgUMYVojqi/wkwAA1Q2O/NQ1shAAAAAElFTkSuQmCC');
+    background-repeat: no-repeat;
+    background-position: 98% center;
+}
+
+[type='checkbox'].validation-failed + label:before {
+    border: 1px solid #ff4545 !important;
+}
+
+/* Töltést jelző layer */
+.loader-layer {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    background: rgba(255, 255, 255, 0.5);
+    z-index: 85000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.spinner {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+}
+
+.spinner-sector {
+    border-radius: 50%;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 4px solid transparent;
+    mix-blend-mode: overlay;
+}
+
+.spinner-sector1 {
+    animation: rotate 1.5s ease-out infinite;
+    border-top: 4px solid blue;
+}
+
+.spinner-sector2 {
+    animation: rotate 2s ease-in infinite;
+    border-top: 4px solid red;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

@@ -1,0 +1,126 @@
+form {
+    position: relative;
+    max-width: 480px;
+    margin: 0px auto;
+}
+
+form .input-item {
+    position: relative;
+    margin: 0px 0px 15px 0px;
+}
+
+form input[type='text'],
+form textarea,
+form select {
+    width: 100%;
+    border: 1px solid #ccc;
+    height: 38px;
+    line-height: 38px;
+    font-size: 13px;
+    color: #000;
+    padding: 0px 0px 0px 15px;
+}
+
+form textarea {
+    height: 75px;
+}
+
+[type='checkbox'] + label {
+    font-size: 12px;
+    font-weight: 500;
+    color: #555555;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+[type='checkbox']:not(:checked),
+[type='checkbox']:checked {
+    position: absolute;
+    left: -9999px;
+}
+[type='checkbox']:not(:checked) + label,
+[type='checkbox']:checked + label {
+    position: relative;
+    cursor: pointer;
+    padding: 9px 0px 0px 30px;
+}
+[type='checkbox']:not(:checked) + label:before,
+[type='checkbox']:checked + label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 23px;
+    height: 23px;
+    border: 1px solid #e6e6e6;
+    border-radius: 0px;
+    background: #fff;
+}
+[type='checkbox']:not(:checked) + label:after,
+[type='checkbox']:checked + label:after {
+    content: '✔';
+    width: auto;
+    height: auto;
+    color: #a51c3b;
+    background: none;
+    border-radius: 0px;
+    position: absolute;
+    top: 8px;
+    left: 7px;
+    transition: all 0.2s;
+    font-size: 16px;
+}
+[type='checkbox']:not(:checked) + label:after {
+    opacity: 0;
+    transform: scale(0);
+}
+[type='checkbox']:checked + label:after {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.choosed {
+    font-size: 14px;
+    display: block;
+    float: left;
+}
+.choosed ul li {
+    margin: 5px 0px;
+    list-style: none;
+}
+.choosed ul li span {
+    color: #f00;
+    font-weight: bold;
+    font-size: 13px;
+}
+.file-upload .right .text {
+    display: flex;
+    align-items: center;
+}
+.upload-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 145px;
+    height: 35px;
+    line-height: 35px;
+    border: none;
+    z-index: 9000;
+    background: #020000;
+    text-align: center;
+    margin: 0px 20px 0px 0px;
+}
+.upload-wrapper span {
+    font-size: 20px;
+    color: #fff;
+    font-weight: 700;
+}
+.upload-wrapper input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}

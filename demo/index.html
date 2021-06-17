@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic javascript validator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../validator.css">
+</head>
+<body>
+    <form id="contact-form">
+        <div class="input-item">
+            <label for="name">Name</label>
+            <input type="text" 
+                   name="name" 
+                   id="name" 
+                   data-rules="required" />
+        </div>
+        <div class="input-item">
+            <label for="email">Email</label>
+            <input type="text" 
+                   name="email" 
+                   id="email" 
+                   data-rules="email" />
+        </div>
+        <div class="input-item">
+            <label for="password">Pasword</label>
+            <input type="text" 
+                   name="password" 
+                   id="password" 
+                   data-rules="required|password|minlength"
+                   data-length="6" />
+        </div>
+        <div class="input-item">
+            <label for="password-again">Pasword again</label>
+            <input type="text" 
+                   name="password_again" 
+                   id="password-again" 
+                   data-rules="required|password|minlength"
+                   data-length="6" />
+        </div>
+        <div class="input-item">
+            <label for="zip">Zip</label>
+            <input type="text" 
+                   name="zip" 
+                   id="zip" 
+                   data-rules="required|number"
+                   data-messages="Zip is required|Zip must be a number!" />
+        </div>
+        <div class="input-item file-upload">
+            <div class="right flex">
+                <div class="upload-wrapper">
+                    <span>File upload</span>
+                    <input type="file" 
+                           name="file" 
+                           id="file-upload" 
+                           class="upload" 
+                           data-rules="required|file",
+                           data-size="26214400",
+                           data-extension="jpg|png">
+                </div>
+                <div class="text">
+                    <p>
+                        Lorem ipsum dolores sit amet
+                    </p>
+
+                    <div class="choosed">
+                        <ul></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="input-item">
+            <input type="checkbox" 
+                   name="privacy" 
+                   id="privacy" 
+                   value="1" 
+                   data-rules="required_cb" 
+                   data-messages="You must accept the Privacy Policy!">
+            <label for="privacy">I have read and accept the Privacy Policy</label>
+        </div>
+        <div class="input-item">
+            <input type="submit" name="contact_submit" id="contact-submit" value="Send" />
+        </div>
+    </form>
+    <script src="../validator.js"></script>
+    <script>
+        new Validator('contact-form');
+    </script>
+</body>
+</html>
