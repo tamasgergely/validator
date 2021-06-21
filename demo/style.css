@@ -1,17 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.form-container {
+    min-height: 100vh;
+    min-width: 100vw;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.form-container h1 {
+    margin: 0px 0px 40px;
+}
+
 form {
     position: relative;
-    max-width: 480px;
-    margin: 0px auto;
+    width: 480px;
+    max-width: 80%;
 }
 
 form .input-item {
     position: relative;
-    margin: 0px 0px 15px 0px;
+    margin: 0px 0px 15px;
 }
 
-form input[type='text'],
-form textarea,
-form select {
+form label {
+    display: block;
+    margin: 0px 0px 5px;
+}
+
+form input[type='text'] {
     width: 100%;
     border: 1px solid #ccc;
     height: 38px;
@@ -21,106 +51,54 @@ form select {
     padding: 0px 0px 0px 15px;
 }
 
-form textarea {
-    height: 75px;
-}
-
-[type='checkbox'] + label {
-    font-size: 12px;
-    font-weight: 500;
-    color: #555555;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-}
-[type='checkbox']:not(:checked),
-[type='checkbox']:checked {
-    position: absolute;
-    left: -9999px;
-}
-[type='checkbox']:not(:checked) + label,
-[type='checkbox']:checked + label {
-    position: relative;
+form input[type='submit'] {
+    border: none;
+    outline: none;
+    padding: 15px;
+    font-size: 18px;
+    min-width: 200px;
+    background-color: #007feb;
+    color: #fff;
     cursor: pointer;
-    padding: 9px 0px 0px 30px;
-}
-[type='checkbox']:not(:checked) + label:before,
-[type='checkbox']:checked + label:before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 6px;
-    width: 23px;
-    height: 23px;
-    border: 1px solid #e6e6e6;
-    border-radius: 0px;
-    background: #fff;
-}
-[type='checkbox']:not(:checked) + label:after,
-[type='checkbox']:checked + label:after {
-    content: '✔';
-    width: auto;
-    height: auto;
-    color: #a51c3b;
-    background: none;
-    border-radius: 0px;
-    position: absolute;
-    top: 8px;
-    left: 7px;
-    transition: all 0.2s;
-    font-size: 16px;
-}
-[type='checkbox']:not(:checked) + label:after {
-    opacity: 0;
-    transform: scale(0);
-}
-[type='checkbox']:checked + label:after {
-    opacity: 1;
-    transform: scale(1);
 }
 
-.choosed {
-    font-size: 14px;
-    display: block;
-    float: left;
-}
-.choosed ul li {
-    margin: 5px 0px;
-    list-style: none;
-}
-.choosed ul li span {
-    color: #f00;
-    font-weight: bold;
-    font-size: 13px;
-}
-.file-upload .right .text {
+.checkbox-container {
     display: flex;
     align-items: center;
 }
-.upload-wrapper {
-    position: relative;
-    overflow: hidden;
-    width: 145px;
-    height: 35px;
-    line-height: 35px;
-    border: none;
-    z-index: 9000;
-    background: #020000;
-    text-align: center;
-    margin: 0px 20px 0px 0px;
+
+.checkbox-container label {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
 }
-.upload-wrapper span {
-    font-size: 20px;
-    color: #fff;
-    font-weight: 700;
-}
-.upload-wrapper input {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    margin: 0;
-    padding: 0;
+
+.checkbox-container input[type='checkbox'] {
+    cursor: pointer;
     opacity: 0;
-    filter: alpha(opacity=0);
+    position: absolute;
+}
+
+.checkbox-container label::before {
+    content: '';
+    width: 1em;
+    height: 1em;
+    border: 0.05em #000 solid;
+    margin: 0px 10px 0px 0px;
+}
+
+.checkbox-container input[type='checkbox']:checked + label::before {
+    content: '\002714';
+    background-color: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#file-upload + label {
+    display: inline-block;
+    background-color: #007feb;
+    color: white;
+    padding: 0.5rem;
+    cursor: pointer;
 }

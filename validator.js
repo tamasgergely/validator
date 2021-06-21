@@ -7,13 +7,25 @@ class Validator {
     /**
      * Constructor
      * @param {string} formId - Target form id
+     * @param {string} lang - Messages lang
     */
-    constructor(formId)
+    constructor(formId, lang = 'hu')
     {
         this.form = document.getElementById(formId);
         this.fields = this.form.querySelectorAll("input[data-rules]");
+        this.lang = lang;
 
         this.errorMessages = {
+            en: {
+                required: 'This field is required!',
+                email: 'Invalid email address!',
+                number: 'The field can only contain numbers!',
+                required_cb: 'Checkbox is required!',
+                file: 'The selected file is incorrect! Please check the file size and type!',
+                password: 'The two password fields are different!',
+                minlength: 'Field length is at least {min} characters!'
+            },
+
             hu: {
                 required: 'A mező kitöltése kötelező!',
                 email: 'Érvénytelen email cím!',
@@ -24,7 +36,6 @@ class Validator {
                 minlength: 'A mező hossza minimum {min} karakter!'
             },
         };
-        this.lang = 'hu';
         
         this.fields.forEach((element)=>{
             element.addEventListener('focus', this.removeErrors);

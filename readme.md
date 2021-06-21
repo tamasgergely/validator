@@ -26,65 +26,70 @@ Put validator.js at the bottom of your markup
 ```html
     <form id="contact-form">
         <div class="input-item">
-            <label for="name">Name</label>
-            <input type="text" 
-                   name="name" 
-                   id="name" 
-                   data-rules="required" />
+            <label for="name">Name*</label>
+            <input type="text"
+                    name="name"
+                    id="name"
+                    data-rules="required" />
         </div>
         <div class="input-item">
-            <label for="email">Email</label>
-            <input type="text" 
-                   name="email" 
-                   id="email" 
-                   data-rules="email" />
+            <label for="email">Email*</label>
+            <input type="text"
+                    name="email"
+                    id="email"
+                    data-rules="email" />
         </div>
         <div class="input-item">
-            <label for="password">Pasword</label>
-            <input type="password" 
-                   name="password" 
-                   id="password" 
-                   data-rules="required|password|minlength"
-                   data-length="6" />
+            <label for="password">Pasword*</label>
+            <input type="text"
+                    name="password"
+                    id="password"
+                    data-rules="required|password|minlength"
+                    data-length="6" />
         </div>
         <div class="input-item">
-            <label for="password-again">Pasword again</label>
-            <input type="password" 
-                   name="password_again" 
-                   id="password-again" 
-                   data-rules="required|password|minlength"
-                   data-length="6" />
+            <label for="password-again">Pasword again*</label>
+            <input type="text"
+                    name="password_again"
+                    id="password-again"
+                    data-rules="required|password|minlength"
+                    data-length="6" />
         </div>
         <div class="input-item">
-            <label for="zip">Zip</label>
-            <input type="text" 
-                   name="zip" 
-                   id="zip" 
-                   data-rules="required|number"
-                   data-messages="Zip is required|Zip must be a number!" />
-        </div>
-        <div class="input-item file-upload">
-            <div class="right flex">
-                <div class="upload-wrapper">
-                    <span>File upload</span>
-                    <input type="file" 
-                           name="file" 
-                           id="file-upload" 
-                           class="upload" 
-                           data-rules="required|file",
-                           data-size="26214400",
-                           data-extension="jpg|png">
-                </div>
-            </div>
+            <label for="zip">Zip*</label>
+            <input type="text"
+                    name="zip"
+                    id="zip"
+                    data-rules="required|number"
+                    data-messages="Zip is required|Zip must be a number!" />
         </div>
         <div class="input-item">
-            <input type="checkbox" 
-                   name="privacy" 
-                   id="privacy" 
-                   value="1" 
-                   data-rules="required_cb" 
-                   data-messages="You must accept the Privacy Policy!">
-            <label for="privacy">I have read and accept the Privacy Policy</label>
+            <input type="file" 
+                    id="file-upload"
+                    name="file"
+                    class="upload"
+                    data-rules="required|file",
+                    data-size="26214400",
+                    data-extension="jpg|png"
+                    hidden />
+            <label for="file-upload">Please choose file</label>
+            <span id="file-chosen">No file chosen</span>
+            <script>
+                const uploadBtn = document.getElementById('file-upload');
+                const fileChosen = document.getElementById('file-chosen');
+                uploadBtn.addEventListener('change', function(){
+                    fileChosen.textContent = this.files[0].name
+                })
+            </script>
+        </div>
+        <div class="input-item checkbox-container">
+            <input type="checkbox"
+                    name="privacy"
+                    id="privacy"
+                    value="1"
+                    data-rules="required_cb"
+                    data-messages="You must accept the Privacy Policy!">
+            <label for="privacy">I have read and accept the Privacy Policy*</label>
         </div>
         <div class="input-item">
             <input type="submit" name="contact_submit" id="contact-submit" value="Send" />
@@ -94,7 +99,9 @@ Put validator.js at the bottom of your markup
 ```
 
 ### 3. Call validator constructor
-const contactFormValidator = new Validator('contact-form');
+- Validator has two parameters. Form id and language code ( optional, en or hu, default hu )
+- const contactFormValidator = new Validator('contact-form');
+- const contactFormValidator = new Validator('contact-form','en');
 
 ## Validation types
 ### 1. required
