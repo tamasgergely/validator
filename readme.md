@@ -100,8 +100,8 @@ Put validator.js at the bottom of your markup
 
 ### 3. Call validator constructor
 - Validator has two parameters. Form id and language code ( optional, en or hu, default hu )
-- const contactFormValidator = new Validator('contact-form');
-- const contactFormValidator = new Validator('contact-form','en');
+- new Validator('contact-form');
+- new Validator('contact-form','en');
 
 ## Validation types
 ### 1. required
@@ -140,7 +140,7 @@ Check if two password field value is the same
 
 ### 8. minlength
 Check if input field value is less then the min length property value
-- Add data-rules="min-length" to the input field
+- Add data-rules="minlength" to the input field
 - Add data-length="2" to input (integer)
 
 ### 9. Multiple rules
