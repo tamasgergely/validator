@@ -12,7 +12,7 @@ class Validator {
     constructor(formId, lang = 'hu')
     {
         this.form = document.getElementById(formId);
-        this.fields = this.form.querySelectorAll("input[data-rules]");
+        this.fields = this.form.querySelectorAll("[data-rules]");
         this.lang = lang;
 
         this.errorMessages = {
